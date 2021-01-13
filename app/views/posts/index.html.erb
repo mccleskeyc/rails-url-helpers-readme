@@ -1,0 +1,19 @@
+# messy code that still works
+#<% @posts.each do |post| %>
+    #<div><a href='<%= "/posts/#{post.id}" %>'><%= post.title %></a></div>
+  #<% end %>
+
+# first refactor - cleaner working code using link_to
+#<% @posts.each do |post| %>
+    #<div><%= link_to post.title, "/posts/#{post.id}" %></div>
+  #<% end %> 
+
+# second refactor - not hardcoding or using interpolation, using post_path and pass in the post argument
+#<% @posts.each do |post| %>
+    #<div><%= link_to post.title, post_path(post.id) %></div>
+  #<% end %> 
+
+# final refactor - it knows we should use the ID attribute so we don't need to includ
+<% @posts.each do |post| %>
+    <div><%= link_to post.title, post_path(post) %></div>
+  <% end %>
